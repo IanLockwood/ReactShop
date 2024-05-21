@@ -15,7 +15,7 @@ textAlign: 'center',
 color: theme.palette.text.secondary,
 }));
 
-export const FoodMenu = () => {
+export const MenuPage = () => {
   return (
     <Box sx={{
       flexGrow: 1,

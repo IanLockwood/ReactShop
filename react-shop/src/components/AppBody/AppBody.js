@@ -1,8 +1,8 @@
-import { FoodMenu } from "../FoodMenu/FoodMenu"
+import { MenuPage } from "../MenuPage/MenuPage"
 
 export const AppBody = () => {
   return (
-    <FoodMenu />
+    <MenuPage />
   );
 }
 export default AppBody;
