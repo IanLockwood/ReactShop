@@ -10,17 +10,13 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-const pages = ['Menu', 'About Us'];
+import { Link } from "react-router-dom";
 
 export const StoreHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleGoToCart = (event) => {
-    console.log('hi');
   };
 
   const handleCloseNavMenu = () => {
@@ -71,11 +67,12 @@ export const StoreHeader = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="left">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key="menu" onClick={handleCloseNavMenu} component={Link} to="/">
+                <Typography textAlign="left">Menu</Typography>
+              </MenuItem>
+              <MenuItem key="about" onClick={handleCloseNavMenu} component={Link} to="/about">
+                <Typography textAlign="left">About Us</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Box sx={{
@@ -94,23 +91,30 @@ export const StoreHeader = () => {
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              key="menu"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+              component={Link} to="/"
+            >
+              Menu
+            </Button>
+            <Button
+              key="about"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+              component={Link} to="/about"
+            >
+              About Us
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
           <IconButton
+            component={Link} to="/cart"
             size="large"
             aria-label="view your cart"
             aria-controls="menu-appbar"
-            onClick={handleGoToCart}
             color="inherit"
           >
             <ShoppingCartIcon />

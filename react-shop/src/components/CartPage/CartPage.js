@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 
-export const MenuPage = () => {
+export const CartPage = () => {
   return (
     <p>hello</p>
   );
