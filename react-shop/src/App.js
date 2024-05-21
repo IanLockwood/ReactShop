@@ -2,7 +2,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './siteTheme'
 import './App.css';
 
-import { StoreHeader } from "./components/StoreHeader/StoreHeader"
+import { AppBody } from "./components/AppBody/AppBody";
+import { StoreHeader } from "./components/StoreHeader/StoreHeader";
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
         <header>
           <StoreHeader />
         </header>
+        <body>
+          <AppBody />
+        </body>
       </ThemeProvider>
     </div>
   );
