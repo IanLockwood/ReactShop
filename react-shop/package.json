@@ -41,6 +41,12 @@
   },
   "devDependencies": {
     "jest": "^27.5.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "react-test-renderer": "^18.3.1"
+  },
+  "jest": {
+    "transform": {
+       "^.+\\.(js|jsx)$": "babel-jest"
+    }
   }
 }
