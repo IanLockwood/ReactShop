@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import { CartContext } from '../../pages/Layout';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -22,6 +23,8 @@ export const StoreHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const currentCart = useContext(CartContext);
 
   return (
     <AppBar position="static">
@@ -118,6 +121,9 @@ export const StoreHeader = () => {
             color="inherit"
           >
             <ShoppingCartIcon />
+            { currentCart.numberOfItemsInCart > 0 &&
+              currentCart.numberOfItemsInCart
+            }
           </IconButton>
           </Box>
         </Toolbar>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -26,11 +26,7 @@ export const MenuPage = () => {
           <Grid item xs={6} md={4} lg={3} key={listItem.id}>
             <Item>
               <MenuItem
-                id={listItem.id}
-                name={listItem.name}
-                description={listItem.description}
-                price={listItem.price}
-                imageUrl={listItem.imageUrl}
+                listItem={listItem}
               />
             </Item>
           </Grid>
