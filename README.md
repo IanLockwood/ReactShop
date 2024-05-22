@@ -18,6 +18,8 @@ Comments - I did not have time to comment anything, but by the time you get to m
 
 Tests - Next up would be tests. Every good project needs a ton of testing, and I'd usually have at least a few tests per component, but again, time. You may see tests by the time you read this. But with recommended project times it's usually an easy casualty!
 
+A Real Request - I just copied the JSON file into my code for speed, but I would have actually made a request to get it from the URL. I was trying to squeeze this in but just barely ran out of time.
+
 Edge Cases - There are so, so many edge cases that could destroy this code. If I was really building GrubHub this would take weeks, mainly because of all of the edge cases, type checking, etc. Which brings me to...
 
 TypeScript! I didn't use it because I know it would've added a lot of time since I'm a little rusty, but my gosh, the type checking alone that TypeScript provides would eliminate 70% of the edge cases here. It would be really, really valuable.
