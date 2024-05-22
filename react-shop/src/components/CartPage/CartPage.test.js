@@ -1,3 +1,13 @@
-test('adds 1 + 2 to equal 3', () => {
-  expect(1+2).toBe(3);
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { CartPage } from "./CartPage";
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  const root = ReactDOM.createRoot(div);
+  root.render(
+    <React.StrictMode>
+      <CartPage />
+    </React.StrictMode>
+  );
 });

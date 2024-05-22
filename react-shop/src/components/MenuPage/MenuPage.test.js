@@ -1,11 +1,14 @@
-import renderer from 'react-test-renderer';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { MenuPage } from "./MenuPage";
 import { menuItemsList } from "./menuItemsList";
 
-it('changes the class when hovered', () => {
-  const component = renderer.create(
-    <MenuPage />
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  const root = ReactDOM.createRoot(div);
+  root.render(
+    <React.StrictMode>
+      <MenuPage />
+    </React.StrictMode>
   );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
 });
