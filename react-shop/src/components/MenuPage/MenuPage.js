@@ -17,14 +17,16 @@ color: theme.palette.text.secondary,
 
 export const MenuPage = () => {
   return (
-    <Box sx={{
-      flexGrow: 1,
-      p: 5
-    }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        p: 5
+      }}
+    >
       <Grid container spacing={{ xs: 2, md: 3 }}>
         { menuItemsList.map((listItem) => (
           <Grid item xs={6} md={4} lg={3} key={listItem.id}>
-            <Item>
+            <Item data-testid="menuItemContainer">
               <MenuItem
                 listItem={listItem}
               />
