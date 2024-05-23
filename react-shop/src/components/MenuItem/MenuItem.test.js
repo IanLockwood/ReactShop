@@ -1,34 +1,53 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import React, { useContext } from 'react';
+import { BrowserRouter } from 'react-router-dom'
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MenuItem } from "./MenuItem";
+import { CartContext, CartContextWrapper } from "../../contexts/CartContext";
+import { StoreHeader } from "../StoreHeader/StoreHeader";
 
-const sampleItem = {
-  id: 6,
-  name: "Carrot Cake",
-  description: "A classic carrot cake with cream cheese frosting.",
-  price: 0,
-  imageUrl: "https://assets.admin.getabite.co/items/olo/386331-1563923698406.jpg"
+const listItem = {
+  id: 12,
+  name: "Chill Out Wings",
+  description: "A plate of wings with a side of ranch.",
+  price: 795,
+  "imageUrl": "https://assets.admin.getabite.co/items/olo/5110570-1563923712675.jpg"
 }
 
 it('renders without crashing', () => {
-  render(<MenuItem listItem={sampleItem} />)
+  render(<MenuItem listItem={listItem} />)
 });
 
-// it('renders a list of food and drink items', () => {
-//   render(<MenuItem />);
-//   expect(screen.getAllByText('Add to cart')[0]).toBeInTheDocument();
-//   expect(screen.getAllByText('$', {exact: false})[0]).toBeInTheDocument();
-// });
-//
-// // Since menu items can change, here I would usually test against a provided JSON.
-// // But since I'm doing that in the component right now anyway, it's the same thing.
-// it('renders specific food and drink items', () => {
-//   render(<MenuItem />);
-//   expect(screen.getByText('Carrot Cake')).toBeInTheDocument();
-//   expect(screen.getByText('Spindrift Raspberry')).toBeInTheDocument();
-// });
-//
-// it('renders all items', () => {
-//   render(<MenuItem />);
-//   expect(screen.getAllByTestId('menuItemContainer').length).toBe(17);
-// });
+it('renders the correct name', () => {
+  render(<MenuItem listItem={listItem} />);
+  expect(screen.getByText('Chill Out Wings')).toBeInTheDocument();
+});
+
+it('renders the correct description', () => {
+  render(<MenuItem listItem={listItem} />);
+  expect(screen.getByText('A plate of wings with a side of ranch.')).toBeInTheDocument();
+});
+
+it('renders the correct price, displayed by the displayPrice helper', () => {
+  render(<MenuItem listItem={listItem} />);
+  expect(screen.getByText('$7.95')).toBeInTheDocument();
+});
+
+it('adds an item to the cart when the add to cart button is clicked', () => {
+  render(
+    <BrowserRouter>
+      <CartContextWrapper>
+        <StoreHeader />
+        <MenuItem listItem={listItem} />
+      </CartContextWrapper>
+    </BrowserRouter>
+  );
+
+  fireEvent.click(screen.getByText('Add to cart'));
+
+  expect(screen.getByText('1 Chill Out Wings was added to your cart!')).toBeInTheDocument();
+  expect(screen.getByText('1')).toBeInTheDocument(); // this checks for the number next to the cart.
+
+  fireEvent.click(screen.getByText('Add to cart'));
+
+  expect(screen.getByText('2')).toBeInTheDocument(); // check for update
+});

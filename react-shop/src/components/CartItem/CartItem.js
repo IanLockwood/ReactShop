@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { CartContext } from '../../pages/Layout'
+import { CartContext } from '../../contexts/CartContext';
 import { displayPrice } from '../../utils/utils'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

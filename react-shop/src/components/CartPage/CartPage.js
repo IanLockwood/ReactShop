@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import { CartContext } from '../../pages/Layout'
+import { CartContext } from '../../contexts/CartContext';
 import { increaseQuantity, decreaseQuantity, deleteItem, calculateTotal, placeOrder } from '../../utils/utils';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
