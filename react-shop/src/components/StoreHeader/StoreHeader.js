@@ -121,9 +121,11 @@ export const StoreHeader = () => {
             color="inherit"
           >
             <ShoppingCartIcon />
-            { currentCart.numberOfItemsInCart > 0 &&
-              currentCart.numberOfItemsInCart
-            }
+            <Box data-testid="number-of-items-in-cart">
+              { currentCart.numberOfItemsInCart > 0 &&
+                currentCart.numberOfItemsInCart
+              }
+            </Box>
           </IconButton>
           </Box>
         </Toolbar>

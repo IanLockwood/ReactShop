@@ -3,7 +3,7 @@
  * @param {function} updateCartFunc function that updates the cart number
  * @returns {null}
  */
-const updateCartNumber = (updateCartFunc) => {
+export const updateCartNumber = (updateCartFunc) => {
   const currentOrder = JSON.parse(localStorage.getItem("IansSantaMonicaCurrentOrder"));
   let cartLength = 0
   Object.keys(currentOrder).forEach((item, i) => {
@@ -33,14 +33,14 @@ export const displayPrice = (num) => {
  * @returns {null}
  */
 export const addItemToCart = (item, updateCartFunc, optionalCallback = undefined) => {
-  const currentOrder = JSON.parse(localStorage.getItem("IansSantaMonicaCurrentOrder")) || {};
-  const timeID= Date.now(); // using this for id of each item. Need it later to delete items!
-  currentOrder[timeID] = {quantity: 1, ...item};
-  localStorage.setItem("IansSantaMonicaCurrentOrder", JSON.stringify(currentOrder));
+  const currentOrder = JSON.parse(localStorage.getItem("IansSantaMonicaCurrentOrder")) || {}; // get order from localStorage.
+  const timeID= Date.now(); // using this for id of each item. Need it later to delete items! See docs for more info.
+  currentOrder[timeID] = {quantity: 1, ...item}; // add new item to existing order
+  localStorage.setItem("IansSantaMonicaCurrentOrder", JSON.stringify(currentOrder)); // set new order in localStorage
 
-  updateCartNumber(updateCartFunc);
+  updateCartNumber(updateCartFunc); // update cart number for StoreHeader
 
-  typeof optional === 'function' && optionalCallback();
+  typeof optional === 'function' && optionalCallback(); // execute optionalCallback if it exists
 }
 
 /**

@@ -14,7 +14,7 @@ export const CartPage = () => {
   const currentCart = useContext(CartContext);
   const navigate = useNavigate();
 
-  const totalPrice = calculateTotal()
+  const totalPrice = orderKeyArray.length ? calculateTotal() : '$0.00';
 
   return (
     <Box sx={{
