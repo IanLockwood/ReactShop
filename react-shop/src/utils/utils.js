@@ -5,7 +5,7 @@
  */
 export const updateCartNumber = (updateCartFunc) => {
   const currentOrder = JSON.parse(localStorage.getItem("IansSantaMonicaCurrentOrder"));
-  let cartLength = 0
+  let cartLength = 0; // We kept reusing this, so we put it in a reusable
   Object.keys(currentOrder).forEach((item, i) => {
     cartLength = cartLength + currentOrder[item].quantity
   });
