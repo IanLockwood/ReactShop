@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter } from 'react-router-dom'
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { MenuItem } from "./MenuItem";
 import { CartContext, CartContextWrapper } from "../../contexts/CartContext";
 import { StoreHeader } from "../StoreHeader/StoreHeader";
@@ -45,9 +45,11 @@ it('adds an item to the cart when the add to cart button is clicked', () => {
   fireEvent.click(screen.getByText('Add to cart'));
 
   expect(screen.getByText('1 Chill Out Wings was added to your cart!')).toBeInTheDocument();
-  expect(screen.getByText('1')).toBeInTheDocument(); // this checks for the number next to the cart.
+
+  const cartNumberDisplay = screen.getByTestId('number-of-items-in-cart');
+  expect(within(cartNumberDisplay).getByText('1')).toBeInTheDocument(); // this checks for the number next to the cart.
 
   fireEvent.click(screen.getByText('Add to cart'));
 
-  expect(screen.getByText('2')).toBeInTheDocument(); // check for update
+  expect(within(cartNumberDisplay).getByText('2')).toBeInTheDocument(); // check for update
 });
